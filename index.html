@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RailSafe AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/blanka" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=pechacks" />
+  </head>
+  <body>
+    <!-- Background Vignette Scanlines (PEC Hacks Style) -->
+    <div class="hero-vignette"></div>
+    <div class="hero-scanlines"></div>
+
+    <div class="app-shell">
+      <!-- SIDEBAR DRAWER (PEC HACKS DARK OBSIDIAN STYLE) -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="logo-text">RAILSAFE AI</div>
+        </div>
+        
+        <nav class="sidebar-nav">
+          <button class="nav-link active" data-view="dashboard">
+            <span class="nav-num">01</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+            <span class="nav-label">Home</span>
+          </button>
+          <button class="nav-link" data-view="dashboard">
+            <span class="nav-num">02</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="15" rx="2"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><line x1="10" y1="10" x2="10" y2="17"/><line x1="14" y1="10" x2="14" y2="17"/></svg></span>
+            <span class="nav-label">My Bags</span>
+          </button>
+          <button class="nav-link" data-view="alerts">
+            <span class="nav-num">03</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+            <span class="nav-label">Alerts</span>
+            <span class="alert-badge" id="sidebar-alert-badge">0</span>
+          </button>
+          <button class="nav-link" data-view="history">
+            <span class="nav-num">04</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span class="nav-label">History</span>
+          </button>
+          <button class="nav-link" data-view="authorize">
+            <span class="nav-num">05</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+            <span class="nav-label">Authorizations</span>
+          </button>
+          <button class="nav-link" data-view="hardware">
+            <span class="nav-num">06</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg></span>
+            <span class="nav-label">Devices</span>
+          </button>
+          <button class="nav-link" data-view="hardware">
+            <span class="nav-num">07</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+            <span class="nav-label">Simulator</span>
+          </button>
+          <div class="nav-divider"></div>
+          <button class="nav-link" data-view="profile">
+            <span class="nav-num">08</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <span class="nav-label">Profile</span>
+          </button>
+          <button class="nav-link" data-view="settings">
+            <span class="nav-num">09</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+            <span class="nav-label">Settings</span>
+          </button>
+          <button class="nav-link" data-view="help">
+            <span class="nav-num">10</span>
+            <span class="nav-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <span class="nav-label">Help</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-avatar"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div class="user-info">
+            <div class="user-name" id="sidebar-user-name">Santhish N</div>
+            <div class="user-role" id="sidebar-user-role">Passenger</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="main-container">
+        <!-- TOPBAR NAVBAR -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="hamburger-menu" id="hamburger"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            <div class="greeting">
+              <div class="greeting-main">GOOD EVENING, <span class="greeting-name" id="topbar-greeting-name">SANTHISH</span></div>
+              <div class="journey-info">
+                <span class="journey-label">JOURNEY:</span>
+                <span class="journey-id">RS82A7</span>
+                <span class="journey-arrow">→</span>
+                <span class="journey-station">CHENNAI CENTRAL</span>
+                <span class="journey-arrow">→</span>
+                <span class="journey-station">MADURAI JN</span>
+                <span class="journey-badge">● ACTIVE JOURNEY</span>
+              </div>
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="icon-btn" id="notification-badge" data-target-view="alerts"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
+            <button class="icon-btn" data-target-view="settings"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+            <div class="view-mode-toggle">
+              <button class="mode-btn active" data-mode="mobile" title="Mobile View"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></button>
+              <button class="mode-btn" data-mode="laptop" title="Laptop View"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg></button>
+            </div>
+          </div>
+        </header>
+
+        <div id="global-alert-banner" class="global-alert-banner hidden"></div>
+
+        <main class="screen-stack">
+          <!-- AUTHENTICATION SCREEN (PEC HACKS CYBER HERO STYLE) -->
+          <section class="screen active" id="welcome">
+            <div class="hero-card welcome-card">
+              <div class="auth-brand-logo">
+                <svg class="icon-svg large-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h1 class="pec-glitch-title">RAILSAFE AI</h1>
+              <p class="subtitle">JOURNEY-AWARE BAGGAGE SECURITY & MONITORING</p>
+
+              <!-- Auth Mode Tabs (PEC Hacks Style) -->
+              <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="tab-login" onclick="switchAuthTab('login')">SIGN IN</button>
+                <button class="auth-tab-btn" id="tab-register" onclick="switchAuthTab('register')">REGISTER</button>
+              </div>
+
+              <!-- Login Form -->
+              <form id="form-login" class="welcome-form auth-form" onsubmit="handleAuthSubmit(event, 'login')">
+                <div class="form-group">
+                  <label for="login-email">MOBILE / EMAIL</label>
+                  <input id="login-email" type="text" placeholder="Enter mobile or email" required />
+                </div>
+                <div class="form-group">
+                  <label for="login-password">PASSWORD</label>
+                  <input id="login-password" type="password" placeholder="Enter password" required />
+                </div>
+                <button type="submit" class="primary-btn wide pill-btn">SIGN IN TO ACCOUNT</button>
+                <button type="button" class="ghost-btn wide pill-btn" data-target-view="dashboard">DEMO MODE (GUEST ACCESS)</button>
+              </form>
+
+              <!-- Register Form -->
+              <form id="form-register" class="welcome-form auth-form hidden" onsubmit="handleAuthSubmit(event, 'register')">
+                <div class="form-group">
+                  <label for="reg-name">FULL NAME</label>
+                  <input id="reg-name" type="text" placeholder="e.g. Santhish N" required />
+                </div>
+                <div class="form-group">
+                  <label for="reg-email">EMAIL ADDRESS</label>
+                  <input id="reg-email" type="email" placeholder="santhish@example.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="reg-mobile">MOBILE NUMBER</label>
+                  <input id="reg-mobile" type="tel" placeholder="+91 9876543210" required />
+                </div>
+                <div class="form-group">
+                  <label for="reg-password">CREATE PASSWORD</label>
+                  <input id="reg-password" type="password" placeholder="Create password" required />
+                </div>
+                <button type="submit" class="primary-btn wide pill-btn">CREATE RAILSAFE ACCOUNT</button>
+                <button type="button" class="ghost-btn wide pill-btn" onclick="switchAuthTab('login')">ALREADY HAVE AN ACCOUNT? SIGN IN</button>
+              </form>
+            </div>
+          </section>
+
+          <!-- DASHBOARD SCREEN -->
+          <section class="screen" id="dashboard">
+            <div class="greeting-block">
+              <p class="eyebrow">PASSENGER DASHBOARD</p>
+              <h2 id="dash-greeting-name">SANTHISH</h2>
+              <p class="muted">ACTIVE JOURNEY: RS82A7</p>
+            </div>
+
+            <div id="dashboard-summary" class="status-card success-card"></div>
+
+            <div class="section-title">MONITORED LUGGAGE</div>
+            <div id="bag-list" class="bag-list"></div>
+
+            <button class="add-bag-card pill-btn" data-target-view="add-bag">+ ADD NEW BAG</button>
+          </section>
+
+          <!-- BAG DETAILS SCREEN -->
+          <section class="screen" id="details">
+            <div class="screen-header">
+              <button class="icon-btn" data-target-view="dashboard"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+              <h3>BAG DETAILS</h3>
+            </div>
+
+            <div id="bag-details" class="detail-card"></div>
+          </section>
+
+          <!-- ADD BAG SCREEN -->
+          <section class="screen" id="add-bag">
+            <div class="screen-header">
+              <button class="icon-btn" data-target-view="dashboard"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+              <h3>ADD NEW BAG</h3>
+            </div>
+
+            <div class="detail-card">
+              <div class="scan-box">
+                <svg class="icon-svg large-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              </div>
+              <h3>SCAN BAG QR CODE</h3>
+              <p class="muted center">OR ENTER DETAILS MANUALLY</p>
+              <label>BAG NAME</label>
+              <input type="text" placeholder="Laptop Bag" />
+              <label>BAG TYPE</label>
+              <select>
+                <option>Suitcase</option>
+                <option>Backpack</option>
+                <option>Laptop Bag</option>
+              </select>
+              <label class="checkbox-row"><input type="checkbox" /> MARK AS PRIORITY BAG</label>
+              <button class="primary-btn wide pill-btn">ADD BAG TO MONITORING</button>
+            </div>
+          </section>
+
+          <!-- AUTHORIZATION SCREEN -->
+          <section class="screen" id="authorize">
+            <div class="screen-header">
+              <button class="icon-btn" data-target-view="details"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+              <h3>AUTHORIZE MOVEMENT</h3>
+            </div>
+
+            <div class="detail-card">
+              <p class="eyebrow">TARGET LUGGAGE</p>
+              <h3>LAPTOP BAG</h3>
+              <p class="section-title small">WHO IS MOVING IT?</p>
+              <div class="option-list">
+                <label><input type="radio" name="mover" /> PORTER</label>
+                <label><input type="radio" name="mover" /> RAILWAY STAFF</label>
+                <label><input type="radio" name="mover" /> FAMILY MEMBER</label>
+                <label><input type="radio" name="mover" /> OTHER</label>
+              </div>
+              <p class="section-title small">PURPOSE</p>
+              <select>
+                <option>Move to luggage area</option>
+                <option>Transfer to platform</option>
+                <option>Inspection</option>
+              </select>
+              <p class="section-title small">DURATION</p>
+              <select>
+                <option>3 minutes</option>
+                <option>5 minutes</option>
+                <option>10 minutes</option>
+              </select>
+              <button class="primary-btn wide pill-btn" data-target-view="dashboard">AUTHORIZE MOVEMENT</button>
+            </div>
+          </section>
+
+          <!-- ALERTS SCREEN -->
+          <section class="screen" id="alerts">
+            <div class="screen-header">
+              <h3>SYSTEM ALERTS</h3>
+            </div>
+            <div id="alerts-list"></div>
+          </section>
+
+          <!-- HISTORY SCREEN -->
+          <section class="screen" id="history">
+            <div class="screen-header">
+              <button class="icon-btn" data-target-view="details"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+              <h3>MOVEMENT HISTORY</h3>
+            </div>
+            <div id="history-list" class="detail-card timeline-card"></div>
+          </section>
+
+          <!-- HARDWARE / SIMULATOR SCREEN -->
+          <section class="screen" id="hardware">
+            <div class="screen-header">
+              <h3>HARDWARE STATUS</h3>
+            </div>
+
+            <div class="detail-card hardware-card">
+              <div class="status-row"><span>ESP32 SENSOR</span><strong>ONLINE</strong></div>
+              <div class="status-row"><span>MPU6050 ACCEL</span><strong>ACTIVE</strong></div>
+              <div class="status-row"><span>BLE BEACON</span><strong>CONNECTED</strong></div>
+              <div class="status-row"><span>RFID SCANNER</span><strong>READY</strong></div>
+              <div class="status-row"><span>FINGERPRINT MODULE</span><strong>READY</strong></div>
+              <div class="status-row"><span>ALARM BUZZER</span><strong>READY</strong></div>
+              <div class="demo-grid">
+                <button class="ghost-btn pill-btn" data-simulate="bag-movement">Bag Movement</button>
+                <button class="ghost-btn pill-btn" data-simulate="owner-far">Owner Far</button>
+                <button class="ghost-btn pill-btn" data-simulate="owner-near">Owner Near</button>
+                <button class="ghost-btn pill-btn" data-simulate="tamper">Tamper</button>
+                <button class="ghost-btn pill-btn" data-simulate="authorized-movement">Authorized Movement</button>
+                <button class="ghost-btn pill-btn" data-simulate="authorization-expired">Authorization Expired</button>
+                <button class="ghost-btn pill-btn" data-simulate="fingerprint-accept">Fingerprint Accept</button>
+                <button class="ghost-btn pill-btn" data-simulate="unauthorized-movement">Unauthorized Movement</button>
+              </div>
+              <div class="debug-card">
+                <div class="section-title small">SYSTEM EVENT LOG</div>
+                <div id="event-log" class="event-log"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- INCIDENT SCREEN -->
+          <section class="screen" id="incident">
+            <div class="screen-header">
+              <button class="icon-btn" data-target-view="alerts"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+              <h3>INCIDENT REPORT</h3>
+            </div>
+            <div id="incident-details" class="detail-card"></div>
+          </section>
+
+          <!-- MORE SCREEN -->
+          <section class="screen" id="more">
+            <div class="screen-header">
+              <h3>MORE OPTIONS</h3>
+            </div>
+            <div class="detail-card">
+              <div class="menu-list">
+                <button class="menu-item" data-target-view="dashboard">Journey Overview</button>
+                <button class="menu-item" data-target-view="hardware">Hardware & Simulator</button>
+                <button class="menu-item" data-target-view="profile">Passenger Profile</button>
+                <button class="menu-item" data-target-view="settings">Settings</button>
+                <button class="menu-item" data-target-view="help">Help & Support</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- PROFILE SCREEN -->
+          <section class="screen" id="profile">
+            <div class="screen-header">
+              <button class="icon-btn" data-target-view="dashboard"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+              <h3>PASSENGER PROFILE</h3>
+            </div>
+
+            <!-- Profile View State -->
+            <div id="profile-view-card" class="detail-card profile-card">
+              <div class="profile-avatar">
+                <svg class="icon-svg large-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <h2 id="prof-display-name">SANTHISH KUMAR</h2>
+              <p class="eyebrow">PASSENGER PROFILE</p>
+              
+              <div class="info-list">
+                <div>
+                  <span>MOBILE</span>
+                  <strong id="prof-display-mobile">+91 9876543210</strong>
+                </div>
+                <div>
+                  <span>EMAIL</span>
+                  <strong id="prof-display-email">santhish@example.com</strong>
+                </div>
+                <div>
+                  <span>PASSENGER ID</span>
+                  <strong id="prof-display-id">PASS-2024-0847</strong>
+                </div>
+                <div>
+                  <span>CURRENT JOURNEY</span>
+                  <strong>RS82A7 (ACTIVE)</strong>
+                </div>
+                <div>
+                  <span>REGISTERED BAGS</span>
+                  <strong id="prof-display-bags">3 BAGS</strong>
+                </div>
+              </div>
+
+              <div class="profile-section">
+                <h4>EMERGENCY CONTACT</h4>
+                <p id="prof-display-emergency">+91 9876543211</p>
+              </div>
+
+              <div class="profile-section">
+                <h4>ACCOUNT STATUS</h4>
+                <p class="status-pill">VERIFIED PASSENGER</p>
+              </div>
+
+              <div class="profile-actions">
+                <button class="primary-btn wide pill-btn" onclick="toggleEditProfile(true)">EDIT PROFILE DETAILS</button>
+                <button class="ghost-btn wide pill-btn" onclick="handleLogout()">SIGN OUT</button>
+              </div>
+            </div>
+
+            <!-- Profile Edit Form State -->
+            <div id="profile-edit-card" class="detail-card profile-card hidden">
+              <h3>EDIT PROFILE DETAILS</h3>
+              <p class="subtitle">UPDATE YOUR PERSONAL & EMERGENCY INFORMATION</p>
+
+              <form id="edit-profile-form" onsubmit="saveProfileChanges(event)">
+                <div class="form-group text-left">
+                  <label for="edit-name">FULL NAME</label>
+                  <input id="edit-name" type="text" required />
+                </div>
+                <div class="form-group text-left">
+                  <label for="edit-email">EMAIL ADDRESS</label>
+                  <input id="edit-email" type="email" required />
+                </div>
+                <div class="form-group text-left">
+                  <label for="edit-mobile">MOBILE NUMBER</label>
+                  <input id="edit-mobile" type="tel" required />
+                </div>
+                <div class="form-group text-left">
+                  <label for="edit-emergency">EMERGENCY CONTACT</label>
+                  <input id="edit-emergency" type="tel" required />
+                </div>
+                
+                <div class="profile-actions">
+                  <button type="submit" class="primary-btn wide pill-btn">SAVE CHANGES</button>
+                  <button type="button" class="ghost-btn wide pill-btn" onclick="toggleEditProfile(false)">CANCEL</button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <!-- SETTINGS SCREEN -->
+          <section class="screen" id="settings">
+            <div class="screen-header">
+              <button class="icon-btn" data-target-view="more"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+              <h3>SETTINGS</h3>
+            </div>
+            <div class="detail-card settings-card">
+              <div class="settings-section">
+                <h4>NOTIFICATIONS</h4>
+                <div class="setting-item">
+                  <div>
+                    <strong>Alert Sounds</strong>
+                    <p class="muted">Play audio tone on alert trigger</p>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" id="alert-sound-toggle" checked>
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <h4>BAG MONITORING</h4>
+                <div class="setting-item">
+                  <div>
+                    <strong>Real-time Tracking</strong>
+                    <p class="muted">Continuous Bluetooth & sensor tracking</p>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" id="realtime-toggle" checked>
+                    <span></span>
+                  </label>
+                </div>
+                <div class="setting-item">
+                  <div>
+                    <strong>Proximity Detection</strong>
+                    <p class="muted">Alert when >10m from bags</p>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" id="proximity-toggle" checked>
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <h4>AUTHORIZATION</h4>
+                <div class="setting-item">
+                  <div>
+                    <strong>Require Confirmation</strong>
+                    <p class="muted">Confirm all bag movements</p>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" id="confirm-toggle" checked>
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+
+              <button class="ghost-btn wide pill-btn" data-target-view="more">BACK TO MENU</button>
+            </div>
+          </section>
+
+          <!-- HELP SCREEN -->
+          <section class="screen" id="help">
+            <div class="screen-header">
+              <button class="icon-btn" data-target-view="more"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+              <h3>HELP & SUPPORT</h3>
+            </div>
+            <div class="detail-card help-card">
+              <div class="help-section">
+                <h4>JOURNEY MANAGEMENT</h4>
+                <p>Track your active journey and assigned luggage throughout your travel. Each journey has a unique reference ID (e.g., RS82A7).</p>
+              </div>
+
+              <div class="help-section">
+                <h4>MULTI-BAG MONITORING</h4>
+                <p>Register multiple bags and monitor each one independently. View real-time battery status, proximity, and motion alerts for all luggage.</p>
+              </div>
+
+              <div class="help-section">
+                <h4>SECURITY ALERTS</h4>
+                <p>Receive instant notifications for unauthorized bag movement, tampering, or owner separation. System risk scores guide your response.</p>
+              </div>
+
+              <div class="help-section">
+                <h4>MOVEMENT AUTHORIZATION</h4>
+                <p>When railway staff or porters move your luggage, grant timed access authorizations to prevent security false alarms.</p>
+              </div>
+
+              <div class="help-section">
+                <h4>RISK LEVELS</h4>
+                <ul class="risk-legend">
+                  <li><strong>SAFE</strong> - All sensors normal</li>
+                  <li><strong>WARNING</strong> - Minor anomaly detected</li>
+                  <li><strong>HIGH RISK</strong> - Elevated security alert</li>
+                  <li><strong>CRITICAL</strong> - Immediate owner action required</li>
+                </ul>
+              </div>
+
+              <button class="ghost-btn wide pill-btn" data-target-view="more">BACK TO MENU</button>
+            </div>
+          </section>
+        </main>
+
+        <!-- BOTTOM NAV (PEC HACKS DARK OBSIDIAN STYLE) -->
+        <nav class="bottom-nav mobile-only">
+          <button class="nav-item active" data-view="dashboard"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></button>
+          <button class="nav-item" data-view="dashboard"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="15" rx="2"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><line x1="10" y1="10" x2="10" y2="17"/><line x1="14" y1="10" x2="14" y2="17"/></svg><span>Bags</span></button>
+          <button class="nav-item" data-view="alerts"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>Alerts</span></button>
+          <button class="nav-item" data-view="history"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>History</span></button>
+          <button class="nav-item" data-view="more"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>More</span></button>
+        </nav>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
